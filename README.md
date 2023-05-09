@@ -9,6 +9,7 @@
   npm i -D esbuild
   npm i uuid @types/uuid
   npm i @aws-sdk/client-s3
+  npm i @aws-sdk/client-dynamodb
 
 - create Launcher.ts file
   bin folder for the application

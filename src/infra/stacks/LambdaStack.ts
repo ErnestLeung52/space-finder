@@ -42,6 +42,15 @@ export class LambdaStack extends Stack {
 		);
 		*/
 
+		// Grant DB access to Lambda
+		spacesLambda.addToRolePolicy(
+			new PolicyStatement({
+				effect: Effect.ALLOW,
+				resources: [props.spacesTable.tableArn],
+				actions: ['dynamodb:PutItem'],
+			})
+		);
+
 		// Export lambda for referencing
 		this.spacesLambdaIntegration = new LambdaIntegration(spacesLambda);
 	}
