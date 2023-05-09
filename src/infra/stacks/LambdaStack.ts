@@ -1,4 +1,5 @@
 import { Stack, StackProps } from 'aws-cdk-lib';
+import { LambdaIntegration } from 'aws-cdk-lib/aws-apigateway';
 import {
 	Code,
 	Function as LambdaFunction,
@@ -8,15 +9,20 @@ import { Construct } from 'constructs';
 import { join } from 'path';
 
 export class LambdaStack extends Stack {
+	public readonly helloLambdaIntegration: LambdaIntegration;
+
 	constructor(scope: Construct, id: string, props?: StackProps) {
 		super(scope, id, props);
 
-		new LambdaFunction(this, 'HelloLambda', {
+		const helloLambda = new LambdaFunction(this, 'HelloLambda', {
 			// specify the code that will be executed inside the lambda
 			runtime: Runtime.NODEJS_18_X,
 			handler: 'hello.main',
 			// specify the code for path
 			code: Code.fromAsset(join(__dirname, '..', '..', 'services')),
 		});
+
+		// Export lambda for referencing
+		this.helloLambdaIntegration = new LambdaIntegration(helloLambda);
 	}
 }
