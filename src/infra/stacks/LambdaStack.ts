@@ -1,11 +1,8 @@
 import { Stack, StackProps } from 'aws-cdk-lib';
 import { LambdaIntegration } from 'aws-cdk-lib/aws-apigateway';
 import { ITable } from 'aws-cdk-lib/aws-dynamodb';
-import {
-	Code,
-	Function as LambdaFunction,
-	Runtime,
-} from 'aws-cdk-lib/aws-lambda';
+import { Code, Runtime } from 'aws-cdk-lib/aws-lambda';
+import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { Construct } from 'constructs';
 import { join } from 'path';
 
@@ -19,12 +16,14 @@ export class LambdaStack extends Stack {
 	constructor(scope: Construct, id: string, props: LambdaStackProps) {
 		super(scope, id, props);
 
-		const helloLambda = new LambdaFunction(this, 'HelloLambda', {
+		// NodejsFunction bundles better than LambdaFunction
+		const helloLambda = new NodejsFunction(this, 'HelloLambda', {
 			// specify the code that will be executed inside the lambda
 			runtime: Runtime.NODEJS_18_X,
-			handler: 'hello.main',
+			handler: 'handler',
 			// specify the code for path
-			code: Code.fromAsset(join(__dirname, '..', '..', 'services')),
+			// entry: Code.fromAsset(join(__dirname, '..', '..', 'services')),
+			entry: join(__dirname, '..', '..', 'services', 'hello.ts'),
 			// communicate with dynamodb table
 			environment: {
 				TABLE_NAME: props.spacesTable.tableName,
