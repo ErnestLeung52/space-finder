@@ -12,25 +12,27 @@ interface LambdaStackProps extends StackProps {
 }
 
 export class LambdaStack extends Stack {
-	public readonly helloLambdaIntegration: LambdaIntegration;
+	public readonly spacesLambdaIntegration: LambdaIntegration;
 
 	constructor(scope: Construct, id: string, props: LambdaStackProps) {
 		super(scope, id, props);
 
 		// NodejsFunction bundles better than LambdaFunction
-		const helloLambda = new NodejsFunction(this, 'HelloLambda', {
+		const spacesLambda = new NodejsFunction(this, 'SpacesLambda', {
 			// specify the code that will be executed inside the lambda
 			runtime: Runtime.NODEJS_18_X,
 			handler: 'handler',
 			// specify the code for path
 			// entry: Code.fromAsset(join(__dirname, '..', '..', 'services')),
-			entry: join(__dirname, '..', '..', 'services', 'hello.ts'),
+			// entry: join(__dirname, '..', '..', 'services', 'hello.ts'),
+			entry: join(__dirname, '..', '..', 'services', 'spaces', 'handler.ts'),
 			// communicate with dynamodb table
 			environment: {
 				TABLE_NAME: props.spacesTable.tableName,
 			},
 		});
 
+		/* Add policy for accessing S3 Bucket list
 		helloLambda.addToRolePolicy(
 			new PolicyStatement({
 				effect: Effect.ALLOW,
@@ -38,8 +40,9 @@ export class LambdaStack extends Stack {
 				resources: ['*'], // bad practice
 			})
 		);
+		*/
 
 		// Export lambda for referencing
-		this.helloLambdaIntegration = new LambdaIntegration(helloLambda);
+		this.spacesLambdaIntegration = new LambdaIntegration(spacesLambda);
 	}
 }

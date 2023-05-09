@@ -31,3 +31,12 @@
 ## AWS SDK
 - Access other AWS resources within account (CLI)
 - Setup debugger script for AWS Lambda (access granted due to CLI auth, can add session token if you have no administrative access)
+
+## AWS Lambdaa architecture
+- API Gateway -> AWS Lambda -> DynamoDB
+- Basic App: API Gateway generates an endpoint, which can be invoked by Lambda and write into DynamoDB
+- Extending App: Multiple HTTP methods for endpoints
+  1. Write a Lambda for each HTTP method
+  2. One Lambda for a endpoint: group by API Gateway Resources (Recommended by AWS)
+  3. Monolithic Lambda to handle all traffics
+- Multiple Lambdas advantages: deploy independently, self description(understand by others), easier to log/monitor
