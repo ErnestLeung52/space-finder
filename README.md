@@ -8,6 +8,7 @@
   npm i -D @types/aws-lambda
   npm i -D esbuild
   npm i uuid @types/uuid
+  npm i @aws-sdk/client-s3
 
 - create Launcher.ts file
   bin folder for the application
@@ -26,3 +27,7 @@
   - Leaves out AWS-SDK dependencies
   - Completely editable
   - Bundling solution: ESbuild
+
+## AWS SDK
+- Access other AWS resources within account (CLI)
+- Setup debugger script for AWS Lambda (access granted due to CLI auth, can add session token if you have no administrative access)
