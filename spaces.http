@@ -10,5 +10,17 @@ content-type: application/json
 ###
 
 // Query String parameter to retrieve specific ID
-GET https://6ffkixdkeg.execute-api.us-west-1.amazonaws.com/prod/spaces?id=343345
+GET https://6ffkixdkeg.execute-api.us-west-1.amazonaws.com/prod/spaces?id=xxxxxxxx
+###
+
+
+PUT https://6ffkixdkeg.execute-api.us-west-1.amazonaws.com/prod/spaces?id=xxxxxxx
+content-type: application/json
+
+  {
+    "location": "Hong Kong"
+  }
+###
+
+DELETE https://6ffkixdkeg.execute-api.us-west-1.amazonaws.com/prod/spaces?id=xxxxxxxx
 ###
