@@ -5,22 +5,23 @@ POST https://6ffkixdkeg.execute-api.us-west-1.amazonaws.com/prod/spaces
 content-type: application/json
 
   {
-    "location": "Paris"
+    "location": "Hong Kong",
+    "name": "Best Location"
   }
 ###
 
 // Query String parameter to retrieve specific ID
-GET https://6ffkixdkeg.execute-api.us-west-1.amazonaws.com/prod/spaces?id=xxxxxxxx
+GET https://6ffkixdkeg.execute-api.us-west-1.amazonaws.com/prod/spaces?id=291a66b1-d0d9-4cfb-8248-305bce714909
 ###
 
 
-PUT https://6ffkixdkeg.execute-api.us-west-1.amazonaws.com/prod/spaces?id=xxxxxxx
+PUT https://6ffkixdkeg.execute-api.us-west-1.amazonaws.com/prod/spaces?id=291a66b1-d0d9-4cfb-8248-305bce714909
 content-type: application/json
 
   {
-    "location": "Hong Kong"
+    "location": "Hong Kong2"
   }
 ###
 
-DELETE https://6ffkixdkeg.execute-api.us-west-1.amazonaws.com/prod/spaces?id=xxxxxxxx
+DELETE https://6ffkixdkeg.execute-api.us-west-1.amazonaws.com/prod/spaces?id=291a66b1-d0d9-4cfb-8248-305bce714909
 ###

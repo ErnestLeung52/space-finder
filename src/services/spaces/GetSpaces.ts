@@ -26,7 +26,7 @@ export async function getSpaces(
 
 				return {
 					statusCode: 200,
-					body: JSON.stringify(getItemResponse.Item),
+					body: JSON.stringify(unmarshalledItem),
 				};
 			} else {
 				return {

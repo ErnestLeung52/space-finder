@@ -12,13 +12,15 @@ process.env.TABLE_NAME = 'SpaceTable-02ed2914a20b';
 // Testing Post method for DynamoDB in Debugger
 handler(
 	{
-		httpMethod: 'DELETE',
-		queryStringParameters: {
-			id: '8891b40c-5d99-4018-a5b7-cf1d14d49d2e',
-		},
-		// body: JSON.stringify({
-		// 	location: 'Hong Kong',
-		// }),
+		httpMethod: 'POST',
+		// queryStringParameters: {
+		// 	id: '8891b40c-5d99-4018-a5b7-cf1d14d49d2e',
+		// },
+		body: JSON.stringify({
+			location: 'Hong Kong',
+		}),
 	} as any,
 	{} as any
-);
+).then((result) => {
+	console.log(result);
+});

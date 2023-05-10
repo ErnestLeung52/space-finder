@@ -4,6 +4,7 @@ import { postSpaces } from './PostSpaces';
 import { getSpaces } from './GetSpaces';
 import { updateSpace } from './UpdateSpace';
 import { deleteSpace } from './DeleteSpace';
+import { JsonError, MissingFieldError } from '../Shared/Validators';
 
 // Context: an outside scope; something outside of the main handler implementation can remain and be reused on further calls -> first make the connection to the DB and reuse that connection
 const ddbClient = new DynamoDBClient({});
@@ -37,9 +38,25 @@ async function handler(event: APIGatewayProxyEvent, context: Context): Promise<A
 				break;
 		}
 	} catch (error) {
-		console.error(error);
+		// console.error gives too much unnecessary error message
+		// console.error(error);
+
+		if (error instanceof MissingFieldError) {
+			return {
+				statusCode: 400,
+				body: JSON.stringify(error.message),
+			};
+		}
+
+		if (error instanceof JsonError) {
+			return {
+				statusCode: 400,
+				body: JSON.stringify(error.message),
+			};
+		}
 
 		return {
+			// 500 unexpected error
 			statusCode: 500,
 			body: JSON.stringify(error.message),
 		};
