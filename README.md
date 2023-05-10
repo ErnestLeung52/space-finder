@@ -10,6 +10,8 @@
     npm i uuid @types/uuid
     npm i @aws-sdk/client-s3
     npm i @aws-sdk/client-dynamodb
+    npm i aws-amplify
+    npm i @aws-amplify/auth
 
 -   create Launcher.ts file
     bin folder for the application
@@ -53,3 +55,9 @@
 ## Bundle Optimization
 
 -   Use Node.js internal uuid library to reduce bundle size
+
+## AWS Cognito
+- User pools: store user data; basic authentication solution
+- Identity pools: fine grained access control; directly call AWS SDK commands
+- JWT token: a way in which APIs over the Internet can be secured
+- Cognito user group: a fine grained access control solution, for partial access restriction

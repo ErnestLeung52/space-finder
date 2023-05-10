@@ -8,13 +8,22 @@ import {
 } from '@aws-sdk/client-dynamodb';
 import { unmarshall } from '@aws-sdk/util-dynamodb';
 import { APIGatewayProxyEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
+import { hasAdminGroup } from '../Shared/Utils';
 
 export async function deleteSpace(
 	event: APIGatewayProxyEvent,
 	ddbClient: DynamoDBClient
 ): Promise<APIGatewayProxyResult> {
-	// Retrieve specific ID
+	const isAuthorized = hasAdminGroup(event);
 
+	if (!isAuthorized) {
+		return {
+			statusCode: 401,
+			body: JSON.stringify('Not authorized!!!'),
+		};
+	}
+
+	// Retrieve specific ID
 	const params = event.queryStringParameters;
 
 	if (params && 'id' in params) {
