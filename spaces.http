@@ -8,3 +8,7 @@ content-type: application/json
     "location": "Paris"
   }
 ###
+
+// Query String parameter to retrieve specific ID
+GET https://6ffkixdkeg.execute-api.us-west-1.amazonaws.com/prod/spaces?id=343345
+###

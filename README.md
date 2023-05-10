@@ -41,3 +41,8 @@
   2. One Lambda for a endpoint: group by API Gateway Resources (Recommended by AWS)
   3. Monolithic Lambda to handle all traffics
 - Multiple Lambdas advantages: deploy independently, self description(understand by others), easier to log/monitor
+
+## Marshalling Solution
+- 'S:' -> Marshalling (dynamoDB format)
+- marshal/unmarshal @aws-sdk/util-dynamodb 
+- DynamoDBDocumentClient @aws-sdk/lib-dynamodb

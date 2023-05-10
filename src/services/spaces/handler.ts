@@ -1,6 +1,7 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 import { postSpaces } from './PostSpaces';
+import { getSpaces } from './GetSpaces';
 
 // Context: an outside scope; something outside of the main handler implementation can remain and be reused on further calls -> first make the connection to the DB and reuse that connection
 const ddbClient = new DynamoDBClient({});
@@ -12,12 +13,13 @@ async function handler(event: APIGatewayProxyEvent, context: Context): Promise<A
 	try {
 		switch (event.httpMethod) {
 			case 'GET':
-				message = 'Hello from GET!';
-				break;
+				const getResponse = await getSpaces(event, ddbClient);
+				console.log(getResponse);
+				return getResponse;
 
 			case 'POST':
-				const response = postSpaces(event, ddbClient);
-				return response;
+				const postResponse = await postSpaces(event, ddbClient);
+				return postResponse;
 
 			default:
 				break;
