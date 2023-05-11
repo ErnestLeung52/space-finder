@@ -12,6 +12,8 @@
     npm i @aws-sdk/client-dynamodb
     npm i aws-amplify
     npm i @aws-amplify/auth
+    npm i @aws-sdk/client-cognito-identity
+    npm i @aws-sdk/credential-providers
 
 -   create Launcher.ts file
     bin folder for the application
@@ -57,7 +59,15 @@
 -   Use Node.js internal uuid library to reduce bundle size
 
 ## AWS Cognito
-- User pools: store user data; basic authentication solution
-- Identity pools: fine grained access control; directly call AWS SDK commands
-- JWT token: a way in which APIs over the Internet can be secured
-- Cognito user group: a fine grained access control solution, for partial access restriction
+
+-   User pools: store user data; basic authentication solution
+-   Identity pools: fine grained access control; directly call AWS SDK commands
+-   JWT token: a way in which APIs over the Internet can be secured
+-   Cognito user group: a fine grained access control solution, for partial access restriction
+
+## AWS Cognito Identity Pools
+
+-   User sends credentials to Cognito and in return receives a session object that contains JWT token
+-   The JWT token will be used to generate or assign to get a IAM role, a role that the user can assume
+-   Retrieves a set of temporary credentials from AWS (access, secret access key, session ID, etc...)
+-   Invoke SDK calls With temp credentials
