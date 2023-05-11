@@ -5,34 +5,40 @@ import { getSpaces } from './GetSpaces';
 import { updateSpace } from './UpdateSpace';
 import { deleteSpace } from './DeleteSpace';
 import { JsonError, MissingFieldError } from '../Shared/Validators';
+import { addCorsHeader } from '../Shared/Utils';
 
 // Context: an outside scope; something outside of the main handler implementation can remain and be reused on further calls -> first make the connection to the DB and reuse that connection
 const ddbClient = new DynamoDBClient({});
 
 // handler will be run many times
 async function handler(event: APIGatewayProxyEvent, context: Context): Promise<APIGatewayProxyResult> {
-	let message: string;
+	// let message: string;
+	let response: APIGatewayProxyResult;
 
 	try {
 		switch (event.httpMethod) {
 			case 'GET':
 				const getResponse = await getSpaces(event, ddbClient);
-				console.log(getResponse);
-				return getResponse;
+				// console.log(getResponse);
+				response = getResponse;
+				break;
 
 			case 'POST':
 				const postResponse = await postSpaces(event, ddbClient);
-				return postResponse;
+				response = postResponse;
+				break;
 
 			case 'PUT':
 				const putResponse = await updateSpace(event, ddbClient);
-				console.log(putResponse);
-				return putResponse;
+				// console.log(putResponse);
+				response = putResponse;
+				break;
 
 			case 'DELETE':
 				const deleteResponse = await deleteSpace(event, ddbClient);
-				console.log(deleteResponse);
-				return deleteResponse;
+				// console.log(deleteResponse);
+				response = deleteResponse;
+				break;
 
 			default:
 				break;
@@ -62,10 +68,13 @@ async function handler(event: APIGatewayProxyEvent, context: Context): Promise<A
 		};
 	}
 
-	const response: APIGatewayProxyResult = {
-		statusCode: 200,
-		body: JSON.stringify(message),
-	};
+	// const response: APIGatewayProxyResult = {
+	// 	statusCode: 200,
+	// 	body: JSON.stringify(message),
+	// };
+
+	// Add CORS header when we send back to client
+	addCorsHeader(response);
 
 	return response;
 }

@@ -71,3 +71,11 @@
 -   The JWT token will be used to generate or assign to get a IAM role, a role that the user can assume
 -   Retrieves a set of temporary credentials from AWS (access, secret access key, session ID, etc...)
 -   Invoke SDK calls With temp credentials
+
+## UI Development
+
+-   Export CF ouput data to use in the app
+    -   cdk deploy --all --outputs-file output.json
+-   Deploy the app to S3 & CloudFront for fast feedback of deployment status
+-   Set up backend for browser access (CORS)
+-   Create UI, deployment bucket, BucketDeployment, originDeployment to read the bucket, CloudFrontDistribution

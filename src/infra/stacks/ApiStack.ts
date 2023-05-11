@@ -2,8 +2,10 @@ import { Stack, StackProps } from 'aws-cdk-lib';
 import {
 	AuthorizationType,
 	CognitoUserPoolsAuthorizer,
+	Cors,
 	LambdaIntegration,
 	MethodOptions,
+	ResourceOptions,
 	RestApi,
 } from 'aws-cdk-lib/aws-apigateway';
 import { IUserPool } from 'aws-cdk-lib/aws-cognito';
@@ -20,7 +22,7 @@ export class ApiStack extends Stack {
 
 		const api = new RestApi(this, 'SpacesApi');
 
-		// Addeding a layer of authorization on top of API
+		// Addding a layer of authorization on top of API
 		const authorizer = new CognitoUserPoolsAuthorizer(this, 'SpacesApiAuthorizer', {
 			cognitoUserPools: [props.userPool],
 			// pass the path to authorization header
@@ -36,8 +38,16 @@ export class ApiStack extends Stack {
 			},
 		};
 
+		const optionsWithCors: ResourceOptions = {
+			defaultCorsPreflightOptions: {
+				allowOrigins: Cors.ALL_ORIGINS,
+				allowMethods: Cors.ALL_METHODS,
+			},
+		};
+
 		// Manually adding resource here (path)
-		const spacesResource = api.root.addResource('spaces');
+		// const spacesResource = api.root.addResource('spaces');
+		const spacesResource = api.root.addResource('spaces', optionsWithCors);
 
 		spacesResource.addMethod('GET', props.spacesLambdaIntegration, optionsWithAuth);
 		spacesResource.addMethod('POST', props.spacesLambdaIntegration, optionsWithAuth);
