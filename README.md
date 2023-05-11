@@ -78,4 +78,8 @@
     -   cdk deploy --all --outputs-file output.json
 -   Deploy the app to S3 & CloudFront for fast feedback of deployment status
 -   Set up backend for browser access (CORS)
--   Create UI, deployment bucket, BucketDeployment, originDeployment to read the bucket, CloudFrontDistribution
+-   Create UI, deployment bucket, BucketDeployment, originDeployment to read the bucket, CloudFrontDistribution(read data from S3 bucket)
+
+## React with Amplify
+
+-   If inner state of a component changes, React will re-render the component (dynamic behavior)

@@ -9,6 +9,9 @@
     "ExportsOutputRefSpacesTable8A9973559FB4B87D": "SpaceTable-02ed2914a20b",
     "ExportsOutputFnGetAttSpacesTable8A997355Arn242927FE": "arn:aws:dynamodb:us-west-1:838934581128:table/SpaceTable-02ed2914a20b"
   },
+  "UiDeploymentStack": {
+    "SpaceFinderUrl": "d8xvaaxlwkz7c.cloudfront.net"
+  },
   "LambdaStack": {
     "ExportsOutputFnGetAttSpacesLambdaA5F923A4ArnE59FF2BB": "arn:aws:lambda:us-west-1:838934581128:function:LambdaStack-SpacesLambdaA5F923A4-frbPVBnOYYqv"
   },
