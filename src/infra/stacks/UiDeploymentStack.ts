@@ -21,7 +21,7 @@ export class UiDeploymentStack extends Stack {
 		});
 
 		// UI needs to be store under dist folder, else error
-		const uiDir = join(__dirname, '..', '..', 'frontend', 'dist');
+		const uiDir = join(__dirname, '..', '..', '..', '..', 'space-finder-frontend', 'dist');
 
 		if (!existsSync(uiDir)) {
 			console.warn('UI dir not found: ' + uiDir);
