@@ -14,6 +14,7 @@
     npm i @aws-amplify/auth
     npm i @aws-sdk/client-cognito-identity
     npm i @aws-sdk/credential-providers
+    npm init vite@latest -- --template react-ts
 
 -   create Launcher.ts file
     bin folder for the application
@@ -83,3 +84,6 @@
 ## React with Amplify
 
 -   If inner state of a component changes, React will re-render the component (dynamic behavior)
+-   Configure Vite to distribute code compatiable with AWS S3
+-   Upload dist to S3, and optimize dist size
+-   Create spaces: ingest data (name, location, photo) send data to DynamoDB and create a bucket to upload the pic file to the bucket and return back the photo url

@@ -7,7 +7,12 @@ import {
 	UserPoolClient,
 } from 'aws-cdk-lib/aws-cognito';
 import { Effect, FederatedPrincipal, PolicyStatement, Role } from 'aws-cdk-lib/aws-iam';
+import { IBucket } from 'aws-cdk-lib/aws-s3';
 import { Construct } from 'constructs';
+
+interface AuthStackProps extends StackProps {
+	photosBucket: IBucket;
+}
 
 export class AuthStack extends Stack {
 	// private userPool: UserPool;
@@ -21,16 +26,16 @@ export class AuthStack extends Stack {
 	private unAuthenticatedRole: Role;
 	private adminRole: Role;
 
-	constructor(scope: Construct, id: string, props?: StackProps) {
+	constructor(scope: Construct, id: string, props: AuthStackProps) {
 		super(scope, id, props);
 
 		this.createUserPool();
 		this.createUserPoolClient();
 		this.createIdentityPool();
-    
-		this.createRoles();
+
+		this.createRoles(props.photosBucket);
 		this.attachRoles();
-    // placed at last because need something from createRoles()
+		// placed at last because need something from createRoles()
 		this.createAdminsGroup();
 	}
 
@@ -89,7 +94,7 @@ export class AuthStack extends Stack {
 	}
 
 	// Specify below roles are assumed by the identity pool
-	private createRoles() {
+	private createRoles(photosBucket: IBucket) {
 		this.authenticatedRole = new Role(this, 'CognitoDefaultAuthenticatedRole', {
 			// IAM Roles Trust relationship; assumed by identity pool
 			assumedBy: new FederatedPrincipal(
@@ -138,11 +143,12 @@ export class AuthStack extends Stack {
 		});
 
 		// Testing: added actions to role for listing all buckets
+		// Admin role is able to do blow actions to only inside the bucket
 		this.adminRole.addToPolicy(
 			new PolicyStatement({
 				effect: Effect.ALLOW,
-				actions: ['s3:ListAllMyBuckets'],
-				resources: ['*'],
+				actions: ['s3:*', 's3-object-lambda:*'],
+				resources: [photosBucket.bucketArn + '/*'],
 			})
 		);
 	}
