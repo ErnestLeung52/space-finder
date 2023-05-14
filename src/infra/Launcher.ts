@@ -13,7 +13,9 @@ const lambdaStack = new LambdaStack(app, 'LambdaStack', {
 	spacesTable: dataStack.spacesTable,
 });
 
-const authStack = new AuthStack(app, 'AuthStack');
+const authStack = new AuthStack(app, 'AuthStack', {
+	photosBucket: dataStack.photosBucket,
+});
 
 new ApiStack(app, 'ApiStack', {
 	spacesLambdaIntegration: lambdaStack.spacesLambdaIntegration,
@@ -21,3 +23,6 @@ new ApiStack(app, 'ApiStack', {
 });
 
 new UiDeploymentStack(app, 'UiDeploymentStack');
+// new UiDeploymentStack(app, 'UiDeploymentStack', {
+// 	deploymentBucket: dataStack.deploymentBucket,
+// });
