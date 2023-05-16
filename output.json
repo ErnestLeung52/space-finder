@@ -1,23 +1,23 @@
 {
   "DataStack": {
-    "ExportsOutputFnGetAttSpaceFinderPhotosE708E252Arn354BE01C": "arn:aws:s3:::space-finder-photos-02e194a44197",
-    "ExportsOutputRefSpacesTable8A9973559FB4B87D": "SpaceTable-02e194a44197",
-    "SpaceFinderPhotosBucketName": "space-finder-photos-02e194a44197",
-    "ExportsOutputFnGetAttSpacesTable8A997355Arn242927FE": "arn:aws:dynamodb:us-west-1:838934581128:table/SpaceTable-02e194a44197"
+    "ExportsOutputFnGetAttSpaceFinderPhotosE708E252Arn354BE01C": "arn:aws:s3:::space-finder-photos-020c7998df5f",
+    "ExportsOutputRefSpacesTable8A9973559FB4B87D": "SpaceTable-020c7998df5f",
+    "SpaceFinderPhotosBucketName": "space-finder-photos-020c7998df5f",
+    "ExportsOutputFnGetAttSpacesTable8A997355Arn242927FE": "arn:aws:dynamodb:us-west-1:838934581128:table/SpaceTable-020c7998df5f"
   },
   "UiDeploymentStack": {
-    "SpaceFinderUrl": "do1r8f0setbzt.cloudfront.net"
+    "SpaceFinderUrl": "dq0zgw4j557pt.cloudfront.net"
   },
   "AuthStack": {
-    "ExportsOutputFnGetAttSpaceUserPool6AB542DCArnC2E21F85": "arn:aws:cognito-idp:us-west-1:838934581128:userpool/us-west-1_tskVgCgqG",
-    "SpaceUserPoolId": "us-west-1_tskVgCgqG",
-    "SpaceUserPoolClientId": "3a1i0tqei4mefe4nmug11gjk1s",
-    "SpaceIdentityPoolId": "us-west-1:91022e97-3fbc-4fbd-9d35-16c97787ed1f"
+    "ExportsOutputFnGetAttSpaceUserPool6AB542DCArnC2E21F85": "arn:aws:cognito-idp:us-west-1:838934581128:userpool/us-west-1_fzkQPHsaM",
+    "SpaceUserPoolId": "us-west-1_fzkQPHsaM",
+    "SpaceUserPoolClientId": "qsp0r5bhcsjrlp6iqborrlhuh",
+    "SpaceIdentityPoolId": "us-west-1:be18aeef-53b3-4a78-b955-37aef35a6e73"
   },
   "LambdaStack": {
-    "ExportsOutputFnGetAttSpacesLambdaA5F923A4ArnE59FF2BB": "arn:aws:lambda:us-west-1:838934581128:function:LambdaStack-SpacesLambdaA5F923A4-mcJznR86Wyn9"
+    "ExportsOutputFnGetAttSpacesLambdaA5F923A4ArnE59FF2BB": "arn:aws:lambda:us-west-1:838934581128:function:LambdaStack-SpacesLambdaA5F923A4-ZTl4gxQVrV7N"
   },
   "ApiStack": {
-    "SpacesApiEndpoint36C4F3B6": "https://6cu8gh8y33.execute-api.us-west-1.amazonaws.com/prod/"
+    "SpacesApiEndpoint36C4F3B6": "https://b15hfe9n5m.execute-api.us-west-1.amazonaws.com/prod/"
   }
 }

@@ -14,11 +14,9 @@
     npm i @aws-amplify/auth
     npm i @aws-sdk/client-cognito-identity
     npm i @aws-sdk/credential-providers
-<<<<<<< HEAD
-    sudo npm init vite@latest -- --template react-ts
-=======
     npm init vite@latest -- --template react-ts
->>>>>>> s3PolicyUpdate
+    npm i @aws-sdk/client-cognito-identity @aws-sdk/credential-providers
+    npm i @aws-sdk/client-s3
 
 -   create Launcher.ts file
     bin folder for the application
