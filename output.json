@@ -6,7 +6,7 @@
     "ExportsOutputFnGetAttSpacesTable8A997355Arn242927FE": "arn:aws:dynamodb:us-west-1:838934581128:table/SpaceTable-020c7998df5f"
   },
   "UiDeploymentStack": {
-    "SpaceFinderUrl": "dq0zgw4j557pt.cloudfront.net"
+    "SpaceFinderUrl": "d30lc012lnxbk8.cloudfront.net"
   },
   "AuthStack": {
     "ExportsOutputFnGetAttSpaceUserPool6AB542DCArnC2E21F85": "arn:aws:cognito-idp:us-west-1:838934581128:userpool/us-west-1_fzkQPHsaM",
