@@ -1,91 +1,91 @@
-## Initialize CDK project from scratch:
+# Space Finder
 
--   Project and dependencies set up
-    npm init -y
-    npm i -D aws-cdk aws-cdk-lib constructs
-    npm i -D typescript ts-node
-    npm i -D @types/node
-    npm i -D @types/aws-lambda
-    npm i -D esbuild
-    npm i uuid @types/uuid
-    npm i @aws-sdk/client-s3
-    npm i @aws-sdk/client-dynamodb
-    npm i aws-amplify
-    npm i @aws-amplify/auth
-    npm i @aws-sdk/client-cognito-identity
-    npm i @aws-sdk/credential-providers
-    npm init vite@latest -- --template react-ts
-    npm i @aws-sdk/client-cognito-identity @aws-sdk/credential-providers
-    npm i @aws-sdk/client-s3
+The Online Photo Saving Website is a cloud-based platform powered by AWS that allows users to securely upload and store their photos along with location information and additional details. With this website, users can easily create albums, organize their photos, and share them with others.
 
--   create Launcher.ts file
-    bin folder for the application
+## Table of Contents
 
--   create cdk.json file
-    instruct CDK to look at luancher
+-   [Project Overview](#project-overview)
+-   [Installation](#installation)
+-   [Usage](#usage)
+-   [Features](#features)
+-   [Contributing](#contributing)
+-   [License](#license)
 
-## Dependency management:
+## Project Overview
 
--   Deploy only dependencies, not dev-dependencies (TS, TS-node, CDK, etc...)
--   Do not deploy AWS SDK dependencies - included in the Lambda runtime
--   Bundling: the operation of taking a code from multiple files and generating one single file only with runnable code
--   Solution: NodejsFunction CDK construct
-    -   Bundles all code with tree shaking
-    -   Compiles TS to JS
-    -   Leaves out AWS-SDK dependencies
-    -   Completely editable
-    -   Bundling solution: ESbuild
+The Online Photo Saving Website is a cloud-based platform that enables users to securely store, organize, and share their photos online. With the goal of simplifying photo management and providing easy access from anywhere, users can upload their photos, add location information, and create personalized albums.
 
-## AWS SDK
+The website offers convenience, accessibility, and security, allowing individuals and various user groups such as families, photographers, and travelers to preserve their memories digitally. With features like sharing options and a user-friendly interface, the project aims to provide a seamless experience for photo enthusiasts seeking a reliable solution for managing and sharing their photo collections. Additionally, the website offers the flexibility to deploy your own instance on AWS, customize it with your own domain, and set up a user pool for enhanced control and personalization.
 
--   Access other AWS resources within account (CLI)
--   Setup debugger script for AWS Lambda (access granted due to CLI auth, can add session token if you have no administrative access)
+## Installation
 
-## AWS Lambdaa architecture
+The backend service code for this repository needs to be placed in a root folder along with the frontend code. Additionally, please clone the frontend codebase from https://github.com/ErnestLeung52/space-finder-frontend.
 
--   API Gateway -> AWS Lambda -> DynamoDB
--   Basic App: API Gateway generates an endpoint, which can be invoked by Lambda and write into DynamoDB
--   Extending App: Multiple HTTP methods for endpoints
-    1. Write a Lambda for each HTTP method
-    2. One Lambda for a endpoint: group by API Gateway Resources (Recommended by AWS)
-    3. Monolithic Lambda to handle all traffics
--   Multiple Lambdas advantages: deploy independently, self description(understand by others), easier to log/monitor
+├── root-folder
+│ ├── space-finder-services
+│ └── space-finder-UI
 
-## Marshalling Solution
+Prerequisite: AWS account, Node.js environment
 
--   'S:' -> Marshalling (dynamoDB format)
--   marshal/unmarshal @aws-sdk/util-dynamodb
--   DynamoDBDocumentClient @aws-sdk/lib-dynamodb
+To get started with the project, please follow the steps below:
 
-## Bundle Optimization
+1. Install AWD CLI for your operating system and veirfy installation with
+   https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+   `aws --version`
 
--   Use Node.js internal uuid library to reduce bundle size
+2. Sign into AWS account within the AWS CLI
+   `aws configure`
+   Follow by entering AWS Access Key ID, AWS Secret Access Key, Deployment Region, Output Fortmat as json
 
-## AWS Cognito
+3. Install AWS CDK globally and check installation with the second command
+   `sudo npm i -g aws-cdk`
+   `cdk --version`
 
--   User pools: store user data; basic authentication solution
--   Identity pools: fine grained access control; directly call AWS SDK commands
--   JWT token: a way in which APIs over the Internet can be secured
--   Cognito user group: a fine grained access control solution, for partial access restriction
+4. Clone the repository to your local machine using the following command:
+   `git clone https://github.com/your-username/your-project.git`
 
-## AWS Cognito Identity Pools
+5. Navigate to the project directory:
+   `cd space-finder-service`
 
--   User sends credentials to Cognito and in return receives a session object that contains JWT token
--   The JWT token will be used to generate or assign to get a IAM role, a role that the user can assume
--   Retrieves a set of temporary credentials from AWS (access, secret access key, session ID, etc...)
--   Invoke SDK calls With temp credentials
+6. Install the necessary dependencies by running the following command:
+   `npm install`
+   This will install all required packages and dependencies specified in the 'package.json' file.
 
-## UI Development
+7. Synthesize your CDK app into an AWS CloudFormation template file
+   `cdk synth`
 
--   Export CF ouput data to use in the app
-    -   cdk deploy --all --outputs-file output.json
--   Deploy the app to S3 & CloudFront for fast feedback of deployment status
--   Set up backend for browser access (CORS)
--   Create UI, deployment bucket, BucketDeployment, originDeployment to read the bucket, CloudFrontDistribution(read data from S3 bucket)
+8. To deploy your CDK application and provision the necessary AWS resources
+   `cdk deploy`
 
-## React with Amplify
+## Usage
 
--   If inner state of a component changes, React will re-render the component (dynamic behavior)
--   Configure Vite to distribute code compatiable with AWS S3
--   Upload dist to S3, and optimize dist size
--   Create spaces: ingest data (name, location, photo) send data to DynamoDB and create a bucket to upload the pic file to the bucket and return back the photo url
+To navigate and perform specific actions in the application, follow these steps:
+
+1. Login
+
+-   Locate the 'Login' page in the top right corner of the application.
+-   Click on the 'Login' link or button to access the login page.
+-   Sign in using your AWS Cognito account credentials.
+
+2. Create Space
+
+-   Once logged in, find the 'Create Space' option in the application.
+-   Click on 'Create Space' to access the upload feature for photos.
+-   Provide the necessary information and select the photos you wish to upload.
+-   Submit the form to upload the photos with associated information.
+
+3. View Spaces
+
+-   To view all the photos associated with your account, navigate to the 'Spaces' section.
+-   Look for the 'Spaces' option in the application's navigation or menu.
+-   Click on 'Spaces' to access a gallery or list view of all the photos under your account.
+-   Browse through the spaces to view and interact with the uploaded photos.
+-   These steps will guide you through the process of signing in, uploading photos with information, and viewing all the photos within the application.
+
+## Upcoming Features
+
+1. Google Maps Integration: Display the location where each photo is taken using Google Maps.
+
+2. Album Creation: Create customized albums to organize your photos based on themes or events.
+
+3. Sharable Links: Generate links with access codes to share albums with others.
