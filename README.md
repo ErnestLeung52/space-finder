@@ -1,6 +1,6 @@
 # Space Finder
 
-The Online Photo Saving Website is a cloud-based platform powered by AWS that allows users to securely upload and store their photos along with location information and additional details. With this website, users can easily create albums, organize their photos, and share them with others.
+Space Finder is an cloud-based Photo Saving Website powered by AWS that allows users to securely upload and store their photos along with location information and additional details. With this website, users can easily create albums, organize their photos, and share them with others.
 
 ## Table of Contents
 
@@ -8,12 +8,10 @@ The Online Photo Saving Website is a cloud-based platform powered by AWS that al
 -   [Installation](#installation)
 -   [Usage](#usage)
 -   [Features](#features)
--   [Contributing](#contributing)
--   [License](#license)
 
 ## Project Overview
 
-The Online Photo Saving Website is a cloud-based platform that enables users to securely store, organize, and share their photos online. With the goal of simplifying photo management and providing easy access from anywhere, users can upload their photos, add location information, and create personalized albums.
+Space Finder is a cloud-based platform that enables users to securely store, organize, and share their photos online. With the goal of simplifying photo management and providing easy access from anywhere, users can upload their photos, add location information, and create personalized albums.
 
 The website offers convenience, accessibility, and security, allowing individuals and various user groups such as families, photographers, and travelers to preserve their memories digitally. With features like sharing options and a user-friendly interface, the project aims to provide a seamless experience for photo enthusiasts seeking a reliable solution for managing and sharing their photo collections. Additionally, the website offers the flexibility to deploy your own instance on AWS, customize it with your own domain, and set up a user pool for enhanced control and personalization.
 
@@ -29,7 +27,7 @@ Prerequisite: AWS account, Node.js environment
 
 To get started with the project, please follow the steps below:
 
-1. Install AWD CLI for your operating system and veirfy installation with
+1. Install AWS CLI for your operating system and veirfy installation with
    https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
    `aws --version`
 
@@ -42,7 +40,7 @@ To get started with the project, please follow the steps below:
    `cdk --version`
 
 4. Clone the repository to your local machine using the following command:
-   `git clone https://github.com/your-username/your-project.git`
+   `git clone https://github.com/ErnestLeung52/space-finder-services.git`
 
 5. Navigate to the project directory:
    `cd space-finder-service`
