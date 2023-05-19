@@ -6,6 +6,7 @@ Space Finder is an cloud-based Photo Saving Website powered by AWS that allows u
 
 -   [Project Overview](#project-overview)
 -   [Installation](#installation)
+-   [Testing](#Testing)
 -   [Usage](#usage)
 -   [Features](#features)
 
@@ -54,6 +55,8 @@ To get started with the project, please follow the steps below:
 
 8. To deploy your CDK application and provision the necessary AWS resources
    `cdk deploy`
+
+## Testing
 
 ## Usage
 
