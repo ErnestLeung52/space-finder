@@ -86,7 +86,5 @@ To navigate and perform specific actions in the application, follow these steps:
 ## Upcoming Features
 
 1. Google Maps Integration: Display the location where each photo is taken using Google Maps.
-
 2. Album Creation: Create customized albums to organize your photos based on themes or events.
-
 3. Sharable Links: Generate links with access codes to share albums with others.
