@@ -21,8 +21,8 @@ The website offers convenience, accessibility, and security, allowing individual
 The backend service code for this repository needs to be placed in a root folder along with the frontend code. Additionally, please clone the frontend codebase from https://github.com/ErnestLeung52/space-finder-frontend.
 
 ├── root-folder
-│ ├── space-finder-services
-│ └── space-finder-UI
+│   ├── space-finder-services
+│   └── space-finder-UI
 
 Prerequisite: AWS account, Node.js environment
 
