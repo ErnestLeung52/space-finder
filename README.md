@@ -20,9 +20,11 @@ The website offers convenience, accessibility, and security, allowing individual
 
 The backend service code for this repository needs to be placed in a root folder along with the frontend code. Additionally, please clone the frontend codebase from https://github.com/ErnestLeung52/space-finder-frontend.
 
+```
 ├── root-folder
 │   ├── space-finder-services
 │   └── space-finder-UI
+```
 
 Prerequisite: AWS account, Node.js environment
 
@@ -95,3 +97,4 @@ To navigate and perform specific actions in the application, follow these steps:
 1. Google Maps Integration: Display the location where each photo is taken using Google Maps.
 2. Album Creation: Create customized albums to organize your photos based on themes or events.
 3. Sharable Links: Generate links with access codes to share albums with others.
+````
