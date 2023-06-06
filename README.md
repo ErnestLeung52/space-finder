@@ -56,6 +56,13 @@ To get started with the project, please follow the steps below:
 8. To deploy your CDK application and provision the necessary AWS resources
    `cdk deploy`
 
+## Monitoring with CloudWatch
+
+-   Add SNS Topic to `MonitorStack` and link for alarming.
+-   To see how CDK alarm looks like, run the following command in your terminal or AWS CLI:
+    `aws cloudwatch describe-alarms`
+-   Set up Lambda call and webhook link in `/src/services/monitor/handler.ts` to send alarm data to a webhook (e.g., Discord example).
+
 ## Testing
 
 ## Usage
