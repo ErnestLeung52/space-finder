@@ -67,6 +67,9 @@ To get started with the project, please follow the steps below:
 
 ## Testing
 
+-   Run `npm run test-services` to test lambda services related to spaces
+-   Run `npm run test-infra` to test against CDK generated infrastructure
+
 ## Usage
 
 To navigate and perform specific actions in the application, follow these steps:
@@ -97,4 +100,7 @@ To navigate and perform specific actions in the application, follow these steps:
 1. Google Maps Integration: Display the location where each photo is taken using Google Maps.
 2. Album Creation: Create customized albums to organize your photos based on themes or events.
 3. Sharable Links: Generate links with access codes to share albums with others.
-````
+
+```
+
+```
